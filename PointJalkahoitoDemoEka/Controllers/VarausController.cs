@@ -131,7 +131,7 @@ namespace PointJalkahoitoDemoEka.Controllers
             return View(varaus);
         }
 
-        // POST: Varaus/Delete/5
+        // POST: Varaus/Delete/5 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
