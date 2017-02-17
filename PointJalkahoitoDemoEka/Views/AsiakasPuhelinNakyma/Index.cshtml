@@ -1,0 +1,73 @@
+﻿@*@model PointJalkahoitoDemoEka.Models.AsiakasPuhelinNakyma*@
+@model IEnumerable<PointJalkahoitoDemoEka.Models.AsiakasPuhelinNakyma>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+<div class="container" style="width:60%;margin-top:2%">
+    
+    @if (Model != null)
+    {
+        <ul class="list-group">
+            @foreach (var item in Model)
+            {
+                <li class="list-group-item">
+                    @*<a class="btn btn-block btn-primary" href="/AsiakasPuhelinNakyma/AsiakasInfo?Asiakas_id=@item.Asiakas_id">@item.Etunimi  @item.Sukunimi</a>*@
+                
+                @Html.ActionLink(item.Etunimi + " "+ item.Sukunimi, "AsiakasInfo",new { Asiakas_id = item.Asiakas_id}, new { @class = "btn btn-block btn-success" })
+                </li>
+            }
+        </ul>
+
+    }
+
+    @* Osa 2
+        @if(Model != null) { 
+    <table class="table table-striped">
+        <tr>
+            <th>Asiakas_id</th>
+            <th>Etunimi</th>
+            <th>Sukunimi</th>
+            <th>Henkilötunnus</th>
+            <th>Puhelin_id</th>
+            <th>Puhelinumero_1</th>
+
+        </tr>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Asiakas_id</td>
+                    <td>@item.Etunimi</td>
+                    <td>@item.Sukunimi</td>
+                    <td>@item.Henkilotunnus</td>
+                    <td>@item.Puhelin_id</td>
+                    <td>@item.Puhelinnumero_1</td>
+                </tr>
+            }
+
+            <tr></tr>
+        </tbody>
+    </table>
+    }*@
+    @* osa 1
+        @if (Model != null)
+    {
+
+        <ul class="list-group">
+            <li class="list-group-item active">Asiakkaan tiedot</li>
+            <li class="list-group-item">Asiakkaan Id: <b>@Model.Asiakas_id</b></li>
+            <li class="list-group-item">Puhelin Id: <b>@Model.Puhelin_id</b></li>
+            <li class="list-group-item">Etunimi: <b>@Model.Etunimi</b></li>
+            <li class="list-group-item">Sukunimi: <b>@Model.Sukunimi</b></li>
+            <li class="list-group-item">Henkilötunnus: <b>@Model.Henkilotunnus</b></li>
+        </ul>
+
+    }*@
+
+</div>

@@ -1,0 +1,84 @@
+﻿@model PointJalkahoitoDemoEka.Models.AsiakasPuhelinNakyma
+@{
+    ViewBag.Title = "Asiakaslomake";
+}
+
+<h2>Asiakaslomake</h2>
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+@*<style>
+    .error {
+        color:red;
+    }
+</style>*@
+
+<div class="container" style="width:60%;margin-top:2%">
+
+    @* Syöttölomake perustoiminnoin
+        @using (Html.BeginForm("Asiakaslomake", "AsiakasPuhelinNakyma", FormMethod.Post))
+    { 
+
+    @Html.DropDownListFor(model => model.Asiakas_id, ViewBag.Asiakaslistaus as SelectList, " Etunimi ", new { @class = "form-control" })
+
+    @Html.TextBoxFor(model => model.Sukunimi, new { @class = "form-control", @placeholder="Sukunimi" })
+    @Html.ValidationMessageFor(model => model.Sukunimi, "", new { @class = "error"})
+    @Html.TextBoxFor(model => model.Henkilotunnus, new { @class = "form-control", @placeholder = "Henkilötunnus" })
+    @Html.ValidationMessageFor(model => model.Henkilotunnus, "", new { @class = "error" })
+
+        @Html.TextBoxFor(model => model.Puhelinnumero_1, new { @class = "form-control", @placeholder = "Puhelinnumero" })
+
+    <div class="checkbox">
+        <label>
+            Html.CheckBoxFor(m => m.)
+        </label>*@
+    <form id="munFormi">
+
+            @Html.DropDownListFor(model => model.Asiakas_id, ViewBag.Asiakaslistaus as SelectList, " Etunimi ", new { @class = "form-control" })
+
+            @Html.TextBoxFor(model => model.Sukunimi, new { @class = "form-control", @placeholder = "Sukunimi" })
+            
+            @Html.TextBoxFor(model => model.Henkilotunnus, new { @class = "form-control", @placeholder = "Henkilötunnus" })
+            
+            @Html.TextBoxFor(model => model.Puhelinnumero_1, new { @class = "form-control", @placeholder = "Puhelinnumero" })
+            
+            <input type="button" value="Submit" class="btn btn-block btn-primary" id="btnSubmit" />
+       
+    </form>
+
+    <div style="text-align:center; display:none" id="loaderDiv">
+        <img src="~/Content/InternetSlowdown_day.gif"  width="150"/>
+    </div>
+
+</div>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script>
+    $(document).ready(function () {
+
+        $("#btnSubmit").click(function () {
+
+            $("#loaderDiv").show();
+
+        var data = $("#munFormi").serialize();
+
+        $.ajax({
+            
+            type: "POST",
+            url: "/AsiakasPuhelinNakyma/Asiakaslomake",
+            data: data,
+            success: function (responce) {
+                $("#loaderDiv").hide();
+                alert("Lisätty");
+
+            }
+        })
+        })
+
+
+    })
+
+</script>
+
+
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

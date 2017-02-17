@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fc90db4bd6ff4321aa4aeeb1b294047b" Name="Diagram1">
+        <EntityTypeShape EntityType="kauppeedbModel.Asiakas" Width="1.5" PointX="7.5" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="kauppeedbModel.Henkilokunta" Width="1.5" PointX="12" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="kauppeedbModel.Hoitaja" Width="1.5" PointX="9.75" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="kauppeedbModel.Hoitopaikka" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="kauppeedbModel.Kayttaja" Width="1.5" PointX="14.25" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="kauppeedbModel.Osoite" Width="1.5" PointX="5.25" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="kauppeedbModel.Palvelu" Width="1.5" PointX="16.5" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="kauppeedbModel.Puhelin" Width="1.5" PointX="17.25" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="kauppeedbModel.Toimipiste" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="kauppeedbModel.Varaus" Width="1.5" PointX="14.25" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="kauppeedbModel.FK_Asiakas_ToTable" ManuallyRouted="false" />
+        <AssociationConnector Association="kauppeedbModel.FK_Asiakas_ToTable_1" ManuallyRouted="false" />
+        <AssociationConnector Association="kauppeedbModel.FK_Asiakas_ToTable_2" ManuallyRouted="false" />
+        <AssociationConnector Association="kauppeedbModel.FK_Asiakas_ToTable_3" ManuallyRouted="false" />
+        <AssociationConnector Association="kauppeedbModel.FK_Asiakas_ToTable_4" ManuallyRouted="false" />
+        <AssociationConnector Association="kauppeedbModel.FK_Asiakas_ToTable_5" ManuallyRouted="false" />
+        <AssociationConnector Association="kauppeedbModel.FK_Hoitaja_ToTable_2" ManuallyRouted="false" />
+        <AssociationConnector Association="kauppeedbModel.FK_Kayttaja_ToTable_1" ManuallyRouted="false" />
+        <AssociationConnector Association="kauppeedbModel.FK_Osoite_ToTable" ManuallyRouted="false" />
+        <AssociationConnector Association="kauppeedbModel.FK_Palvelu_ToTable_1" ManuallyRouted="false" />
+        <AssociationConnector Association="kauppeedbModel.FK_Puhelin_ToTable" ManuallyRouted="false" />
+        <AssociationConnector Association="kauppeedbModel.FK_Varaus_ToTable_3" ManuallyRouted="false" />
+        <AssociationConnector Association="kauppeedbModel.FK_Henkilokunta_ToTable" ManuallyRouted="false" />
+        <AssociationConnector Association="kauppeedbModel.FK_Henkilokunta_ToTable_1" ManuallyRouted="false" />
+        <AssociationConnector Association="kauppeedbModel.FK_Henkilokunta_ToTable_2" ManuallyRouted="false" />
+        <AssociationConnector Association="kauppeedbModel.FK_Henkilokunta_ToTable_3" ManuallyRouted="false" />
+        <AssociationConnector Association="kauppeedbModel.FK_Henkilokunta_ToTable_4" ManuallyRouted="false" />
+        <AssociationConnector Association="kauppeedbModel.FK_Henkilokunta_ToTable_5" ManuallyRouted="false" />
+        <AssociationConnector Association="kauppeedbModel.FK_Kayttaja_ToTable_3" ManuallyRouted="false" />
+        <AssociationConnector Association="kauppeedbModel.FK_Osoite_ToTable_2" ManuallyRouted="false" />
+        <AssociationConnector Association="kauppeedbModel.FK_Puhelin_ToTable_2" ManuallyRouted="false" />
+        <AssociationConnector Association="kauppeedbModel.FK_Varaus_ToTable_4" ManuallyRouted="false" />
+        <AssociationConnector Association="kauppeedbModel.FK_Hoitaja_ToTable" ManuallyRouted="false" />
+        <AssociationConnector Association="kauppeedbModel.FK_Hoitaja_ToTable_1" ManuallyRouted="false" />
+        <AssociationConnector Association="kauppeedbModel.FK_Hoitaja_ToTable_3" ManuallyRouted="false" />
+        <AssociationConnector Association="kauppeedbModel.FK_Hoitaja_ToTable_4" ManuallyRouted="false" />
+        <AssociationConnector Association="kauppeedbModel.FK_Hoitaja_ToTable_5" ManuallyRouted="false" />
+        <AssociationConnector Association="kauppeedbModel.FK_Kayttaja_ToTable_2" ManuallyRouted="false" />
+        <AssociationConnector Association="kauppeedbModel.FK_Osoite_ToTable_1" ManuallyRouted="false" />
+        <AssociationConnector Association="kauppeedbModel.FK_Palvelu_ToTable" ManuallyRouted="false" />
+        <AssociationConnector Association="kauppeedbModel.FK_Puhelin_ToTable_1" ManuallyRouted="false" />
+        <AssociationConnector Association="kauppeedbModel.FK_Varaus_ToTable" ManuallyRouted="false" />
+        <AssociationConnector Association="kauppeedbModel.FK_Hoitopaikka_ToTable" ManuallyRouted="false" />
+        <AssociationConnector Association="kauppeedbModel.FK_Hoitopaikka_ToTable_1" ManuallyRouted="false" />
+        <AssociationConnector Association="kauppeedbModel.FK_Toimipiste_ToTable" ManuallyRouted="false" />
+        <AssociationConnector Association="kauppeedbModel.FK_Varaus_ToTable_2" ManuallyRouted="false" />
+        <AssociationConnector Association="kauppeedbModel.FK_Osoite_ToTable_3" ManuallyRouted="false" />
+        <AssociationConnector Association="kauppeedbModel.FK_Toimipiste_ToTable1" ManuallyRouted="false" />
+        <AssociationConnector Association="kauppeedbModel.FK_Palvelu_ToTable_2" ManuallyRouted="false" />
+        <AssociationConnector Association="kauppeedbModel.FK_Palvelu_ToTable_3" ManuallyRouted="false" />
+        <AssociationConnector Association="kauppeedbModel.FK_Varaus_ToTable_1" ManuallyRouted="false" />
+        <AssociationConnector Association="kauppeedbModel.FK_Puhelin_ToTable_3" ManuallyRouted="false" />
+        <AssociationConnector Association="kauppeedbModel.FK_Toimipiste_ToTable_2" ManuallyRouted="false" />
+        <AssociationConnector Association="kauppeedbModel.FK_Varaus_ToTable_5" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="kauppeedbModel.Rooli" Width="1.5" PointX="12" PointY="3.875" />
+        <AssociationConnector Association="kauppeedbModel.FK_Kayttaja_Kayttaja6" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

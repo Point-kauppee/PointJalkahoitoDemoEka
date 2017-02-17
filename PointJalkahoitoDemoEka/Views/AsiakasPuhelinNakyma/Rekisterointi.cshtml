@@ -1,0 +1,44 @@
+﻿@model PointJalkahoitoDemoEka.Models.RekisterointiViewModel
+@{
+    ViewBag.Title = "Rekisterointi";
+}
+
+<h2>Rekisteröinti</h2>
+
+<form id="Rekisterointilomake">
+    <div class="form-group">
+    <div class="col-md-12">
+        @Html.TextBoxFor(m=>m.Käyttäjätunnus, new {@class="form-control", @placeholder = "Käyttäjätunnus" })
+    </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-12">
+            @Html.PasswordFor(m => m.Salasana, new { @class = "form-control", @placeholder = "Salasana" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-12">
+        <a href="#" class="btn btn-primary" onclick="Rekisteroikayttaja()">Lisää</a>
+        </div>
+    </div>
+</form>
+
+<script>
+
+    var Rekisteroikayttaja = function () {
+        var data = $("#Rekisterointilomake").serialize();
+
+        $.ajax({
+            type: "Post",
+            url: "/AsiakasPuhelinNakyma/Rekisteroikayttaja",
+            data: data,
+            success: function (response) {
+                alert("Lisätty!");
+            }
+
+        })
+
+    }
+</script>

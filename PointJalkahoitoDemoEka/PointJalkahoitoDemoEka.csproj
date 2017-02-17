@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <ApplicationInsightsResourceId>/subscriptions/5b3930d6-a364-4df7-9f08-473e6b6a752f/resourcegroups/Default-ApplicationInsights-EastUS/providers/microsoft.insights/components/PointJalkahoitoDemoEka</ApplicationInsightsResourceId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -34,6 +35,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -44,14 +46,52 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DayPilot.Web.Mvc, Version=8.2.5836.1, Culture=neutral, PublicKeyToken=b8d928e6588028e4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\DayPilot.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.6\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.2.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.2.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.2.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.2.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.2.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.2.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -168,27 +208,194 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AsiakasController.cs" />
+    <Compile Include="Controllers\AsiakasPuhelinNakymaController.cs" />
+    <Compile Include="Controllers\HenkilokuntaController.cs" />
+    <Compile Include="Controllers\HoitajaController.cs" />
+    <Compile Include="Controllers\HoitopaikkaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KayttajaController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\OsoiteController.cs" />
+    <Compile Include="Controllers\PalveluController.cs" />
+    <Compile Include="Controllers\PuhelinController.cs" />
+    <Compile Include="Controllers\ToimipisteController.cs" />
+    <Compile Include="Controllers\VarausController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Asiakas.cs">
+      <DependentUpon>PointJalkahoitoDemoEkaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AsiakasPuhelinNakyma.cs" />
+    <Compile Include="Models\Henkilokunta.cs">
+      <DependentUpon>PointJalkahoitoDemoEkaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Hoitaja.cs">
+      <DependentUpon>PointJalkahoitoDemoEkaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Hoitopaikka.cs">
+      <DependentUpon>PointJalkahoitoDemoEkaModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Kayttaja.cs">
+      <DependentUpon>PointJalkahoitoDemoEkaModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Osoite.cs">
+      <DependentUpon>PointJalkahoitoDemoEkaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Palvelu.cs">
+      <DependentUpon>PointJalkahoitoDemoEkaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointJalkahoitoDemoEkaModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PointJalkahoitoDemoEkaModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointJalkahoitoDemoEkaModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PointJalkahoitoDemoEkaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointJalkahoitoDemoEkaModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PointJalkahoitoDemoEkaModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Puhelin.cs">
+      <DependentUpon>PointJalkahoitoDemoEkaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RekisterointiViewModel.cs" />
+    <Compile Include="Models\Rooli.cs">
+      <DependentUpon>PointJalkahoitoDemoEkaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Toimipiste.cs">
+      <DependentUpon>PointJalkahoitoDemoEkaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Varaus.cs">
+      <DependentUpon>PointJalkahoitoDemoEkaModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\Antlr3.Runtime.dll" />
+    <Content Include="bin\Antlr3.Runtime.pdb" />
+    <Content Include="bin\daypilot-all.min.js" />
+    <Content Include="bin\DayPilot.Web.Mvc.dll" />
+    <Content Include="bin\DayPilot.Web.Mvc.xml" />
+    <Content Include="bin\EntityFramework.dll" />
+    <Content Include="bin\EntityFramework.SqlServer.dll" />
+    <Content Include="bin\EntityFramework.SqlServer.xml" />
+    <Content Include="bin\EntityFramework.xml" />
+    <Content Include="bin\Microsoft.AI.Agent.Intercept.dll" />
+    <Content Include="bin\Microsoft.AI.DependencyCollector.dll" />
+    <Content Include="bin\Microsoft.AI.DependencyCollector.xml" />
+    <Content Include="bin\Microsoft.AI.PerfCounterCollector.dll" />
+    <Content Include="bin\Microsoft.AI.ServerTelemetryChannel.dll" />
+    <Content Include="bin\Microsoft.AI.ServerTelemetryChannel.xml" />
+    <Content Include="bin\Microsoft.AI.Web.dll" />
+    <Content Include="bin\Microsoft.AI.Web.xml" />
+    <Content Include="bin\Microsoft.AI.WindowsServer.dll" />
+    <Content Include="bin\Microsoft.AI.WindowsServer.xml" />
+    <Content Include="bin\Microsoft.ApplicationInsights.dll" />
+    <Content Include="bin\Microsoft.ApplicationInsights.xml" />
+    <Content Include="bin\Microsoft.AspNet.Identity.Core.dll" />
+    <Content Include="bin\Microsoft.AspNet.Identity.Core.xml" />
+    <Content Include="bin\Microsoft.AspNet.Identity.EntityFramework.dll" />
+    <Content Include="bin\Microsoft.AspNet.Identity.EntityFramework.xml" />
+    <Content Include="bin\Microsoft.AspNet.Identity.Owin.dll" />
+    <Content Include="bin\Microsoft.AspNet.Identity.Owin.xml" />
+    <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll" />
+    <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml" />
+    <Content Include="bin\Microsoft.Owin.dll" />
+    <Content Include="bin\Microsoft.Owin.Host.SystemWeb.dll" />
+    <Content Include="bin\Microsoft.Owin.Host.SystemWeb.xml" />
+    <Content Include="bin\Microsoft.Owin.Security.Cookies.dll" />
+    <Content Include="bin\Microsoft.Owin.Security.Cookies.xml" />
+    <Content Include="bin\Microsoft.Owin.Security.dll" />
+    <Content Include="bin\Microsoft.Owin.Security.Facebook.dll" />
+    <Content Include="bin\Microsoft.Owin.Security.Facebook.xml" />
+    <Content Include="bin\Microsoft.Owin.Security.Google.dll" />
+    <Content Include="bin\Microsoft.Owin.Security.Google.xml" />
+    <Content Include="bin\Microsoft.Owin.Security.MicrosoftAccount.dll" />
+    <Content Include="bin\Microsoft.Owin.Security.MicrosoftAccount.xml" />
+    <Content Include="bin\Microsoft.Owin.Security.OAuth.dll" />
+    <Content Include="bin\Microsoft.Owin.Security.OAuth.xml" />
+    <Content Include="bin\Microsoft.Owin.Security.Twitter.dll" />
+    <Content Include="bin\Microsoft.Owin.Security.Twitter.xml" />
+    <Content Include="bin\Microsoft.Owin.Security.xml" />
+    <Content Include="bin\Microsoft.Owin.xml" />
+    <Content Include="bin\Microsoft.QualityTools.Testing.Fakes.dll" />
+    <Content Include="bin\Microsoft.Web.Infrastructure.dll" />
+    <Content Include="bin\Newtonsoft.Json.dll" />
+    <Content Include="bin\Newtonsoft.Json.xml" />
+    <Content Include="bin\Owin.dll" />
+    <Content Include="bin\PointJalkahoitoDemoEka.dll" />
+    <Content Include="bin\PointJalkahoitoDemoEka.pdb" />
+    <Content Include="bin\roslyn\csc.exe" />
+    <Content Include="bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll" />
+    <Content Include="bin\roslyn\System.Collections.Immutable.dll" />
+    <Content Include="bin\roslyn\System.Reflection.Metadata.dll" />
+    <Content Include="bin\roslyn\vbc.exe" />
+    <Content Include="bin\roslyn\VBCSCompiler.exe" />
+    <Content Include="bin\System.Web.Helpers.dll" />
+    <Content Include="bin\System.Web.Helpers.xml" />
+    <Content Include="bin\System.Web.Mvc.dll" />
+    <Content Include="bin\System.Web.Mvc.xml" />
+    <Content Include="bin\System.Web.Optimization.dll" />
+    <Content Include="bin\System.Web.Optimization.xml" />
+    <Content Include="bin\System.Web.Razor.dll" />
+    <Content Include="bin\System.Web.Razor.xml" />
+    <Content Include="bin\System.Web.WebPages.Deployment.dll" />
+    <Content Include="bin\System.Web.WebPages.Deployment.xml" />
+    <Content Include="bin\System.Web.WebPages.dll" />
+    <Content Include="bin\System.Web.WebPages.Razor.dll" />
+    <Content Include="bin\System.Web.WebPages.Razor.xml" />
+    <Content Include="bin\System.Web.WebPages.xml" />
+    <Content Include="bin\WebGrease.dll" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\InternetSlowdown_day.gif" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\PointJalkahoitoDemoEkaModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PointJalkahoitoDemoEkaModel.edmx</DependentUpon>
+      <LastGenOutput>PointJalkahoitoDemoEkaModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\PointJalkahoitoDemoEkaModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PointJalkahoitoDemoEkaModel.edmx</DependentUpon>
+      <LastGenOutput>PointJalkahoitoDemoEkaModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <EntityDeploy Include="Models\PointJalkahoitoDemoEkaModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>PointJalkahoitoDemoEkaModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\PointJalkahoitoDemoEkaModel.edmx.diagram">
+      <DependentUpon>PointJalkahoitoDemoEkaModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="bin\ApplicationInsights.config" />
+    <Content Include="bin\PointJalkahoitoDemoEka.dll.config" />
+    <Content Include="bin\roslyn\Microsoft.CSharp.Core.targets" />
+    <Content Include="bin\roslyn\Microsoft.VisualBasic.Core.targets" />
+    <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
+    <None Include="Properties\PublishProfiles\PointJalkahoitoDemoEka20170202082920.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\DayPilot\daypilot-all.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -207,7 +414,9 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Views\Web.config" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -234,9 +443,66 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Service References\Application Insights\ConnectedService.json" />
+    <Content Include="Views\Asiakas\Create.cshtml" />
+    <Content Include="Views\Asiakas\Delete.cshtml" />
+    <Content Include="Views\Asiakas\Details.cshtml" />
+    <Content Include="Views\Asiakas\Edit.cshtml" />
+    <Content Include="Views\Asiakas\Index.cshtml" />
+    <Content Include="Views\Henkilokunta\Create.cshtml" />
+    <Content Include="Views\Henkilokunta\Delete.cshtml" />
+    <Content Include="Views\Henkilokunta\Details.cshtml" />
+    <Content Include="Views\Henkilokunta\Edit.cshtml" />
+    <Content Include="Views\Henkilokunta\Index.cshtml" />
+    <Content Include="Views\Hoitaja\Create.cshtml" />
+    <Content Include="Views\Hoitaja\Delete.cshtml" />
+    <Content Include="Views\Hoitaja\Details.cshtml" />
+    <Content Include="Views\Hoitaja\Edit.cshtml" />
+    <Content Include="Views\Hoitaja\Index.cshtml" />
+    <Content Include="Views\Hoitopaikka\Create.cshtml" />
+    <Content Include="Views\Hoitopaikka\Delete.cshtml" />
+    <Content Include="Views\Hoitopaikka\Details.cshtml" />
+    <Content Include="Views\Hoitopaikka\Edit.cshtml" />
+    <Content Include="Views\Hoitopaikka\Index.cshtml" />
+    <Content Include="Views\Kayttaja\Create.cshtml" />
+    <Content Include="Views\Kayttaja\Delete.cshtml" />
+    <Content Include="Views\Kayttaja\Details.cshtml" />
+    <Content Include="Views\Kayttaja\Edit.cshtml" />
+    <Content Include="Views\Kayttaja\Index.cshtml" />
+    <Content Include="Views\Osoite\Create.cshtml" />
+    <Content Include="Views\Osoite\Delete.cshtml" />
+    <Content Include="Views\Osoite\Details.cshtml" />
+    <Content Include="Views\Osoite\Edit.cshtml" />
+    <Content Include="Views\Osoite\Index.cshtml" />
+    <Content Include="Views\Palvelu\Create.cshtml" />
+    <Content Include="Views\Palvelu\Delete.cshtml" />
+    <Content Include="Views\Palvelu\Details.cshtml" />
+    <Content Include="Views\Palvelu\Edit.cshtml" />
+    <Content Include="Views\Palvelu\Index.cshtml" />
+    <Content Include="Views\Puhelin\Create.cshtml" />
+    <Content Include="Views\Puhelin\Delete.cshtml" />
+    <Content Include="Views\Puhelin\Details.cshtml" />
+    <Content Include="Views\Puhelin\Edit.cshtml" />
+    <Content Include="Views\Puhelin\Index.cshtml" />
+    <Content Include="Views\Toimipiste\Create.cshtml" />
+    <Content Include="Views\Toimipiste\Delete.cshtml" />
+    <Content Include="Views\Toimipiste\Details.cshtml" />
+    <Content Include="Views\Toimipiste\Edit.cshtml" />
+    <Content Include="Views\Toimipiste\Index.cshtml" />
+    <Content Include="Views\Varaus\Create.cshtml" />
+    <Content Include="Views\Varaus\Delete.cshtml" />
+    <Content Include="Views\Varaus\Details.cshtml" />
+    <Content Include="Views\Varaus\Edit.cshtml" />
+    <Content Include="Views\Varaus\Index.cshtml" />
+    <Content Include="Views\AsiakasPuhelinNakyma\Index.cshtml" />
+    <Content Include="Views\AsiakasPuhelinNakyma\AsiakasInfo.cshtml" />
+    <Content Include="Views\AsiakasPuhelinNakyma\Asiakaslomake.cshtml" />
+    <Content Include="Views\AsiakasPuhelinNakyma\Rekisterointi.cshtml" />
+    <Content Include="Views\AsiakasPuhelinNakyma\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Calendar\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -245,6 +511,13 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

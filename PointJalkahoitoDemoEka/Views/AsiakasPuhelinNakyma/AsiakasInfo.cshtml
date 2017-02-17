@@ -1,0 +1,38 @@
+﻿@model PointJalkahoitoDemoEka.Models.AsiakasPuhelinNakyma
+@{
+    ViewBag.Title = "AsiakasInfo";
+}
+
+<h2>AsiakasInfo</h2>
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container">
+    <h3>AsiakasInfo</h3>
+
+    <table class="table table-striped" style="width:40%">
+        <tr>
+            <td>AsiakasId</td>
+            <td>@Model.Asiakas_id</td>
+        </tr>
+        <tr>
+            <td>Etunimi</td>
+            <td>@Model.Etunimi</td>
+        </tr>
+        <tr>
+            <td>Sukunimi</td> 
+            <td>@Model.Sukunimi</td>
+        </tr>
+        <tr>
+            <td>Henkilötunnus</td>
+            <td>@Model.Henkilotunnus</td>
+        </tr>
+        <tr>
+            <td>Puhelinnumero</td>
+            <td>@Model.Puhelinnumero_1</td>
+        </tr>
+
+
+    </table> 
+
+</div>

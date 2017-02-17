@@ -1,0 +1,60 @@
+﻿@model PointJalkahoitoDemoEka.Models.RekisterointiViewModel
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+
+<form id="Sisaankirjaus">
+    <div class="form-group">
+        <div class="col-md-12">
+            @Html.TextBoxFor(m => m.Käyttäjätunnus, new { @class = "form-control", @placeholder = "Käyttäjätunnus" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-12">
+            @Html.PasswordFor(m => m.Salasana, new { @class = "form-control", @placeholder = "Salasana" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-12">
+            <a href="#" class="btn btn-primary" onclick="Kayttajansisaankirjaus()">Kirjaantuminen</a>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-12">
+          @Session.SessionID
+            
+        </div>
+    </div>
+</form>
+
+<script>
+
+    var Kayttajansisaankirjaus = function () {
+        var data = $("#Sisaankirjaus").serialize();
+
+        $.ajax({
+            type: "Post",
+            url: "/AsiakasPuhelinNakyma/Kayttajansisaankirjaus",
+            data: data,
+            success: function (response) {
+                //alert("Lisätty!");
+                if (response == "fail") {
+                    window.location.href = "/AsiakasPuhelinNakyma/Login";
+                }
+                else if (response == "Pääkäyttäjä") {
+                    window.location.href = "/AsiakasPuhelinNakyma/Admin";
+                }
+                else {
+                    window.location.href = "/AsiakasPuhelinNakyma/Login";
+                }
+            }
+
+        })
+
+    }
+</script>
