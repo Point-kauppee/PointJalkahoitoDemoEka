@@ -116,7 +116,7 @@ namespace PointJalkahoitoDemoEka.Controllers
             return View(varaus);
         }
 
-        // GET: Varaus/Delete/5 
+        // GET: Varaus/Delete/5  
         public ActionResult Delete(int? id)
         {
             if (id == null)
