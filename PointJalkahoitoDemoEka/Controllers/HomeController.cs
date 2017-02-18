@@ -7,6 +7,7 @@ using DayPilot.Web.Mvc;
 using DayPilot.Web.Mvc.Events.Month;
 using DayPilot.Web.Mvc.Enums;
 using System.Web;
+using DayPilot.Web.Mvc.Events.Calendar;
 
 
 
@@ -24,7 +25,8 @@ namespace PointJalkahoitoDemoEka.Controllers
             return new Dpm().CallBack(this);
         }
 
-        class Dpm : DayPilotMonth
+        //class Dpm : DayPilotMonth
+        class Dpm : DayPilotCalendar
         {
             //kauppeedbEntities db = new kauppeedbEntities();
 
@@ -32,7 +34,7 @@ namespace PointJalkahoitoDemoEka.Controllers
             //{
             //    Update(CallBackUpdateType.Full);
             //}
-            protected override void OnInit(InitArgs e)
+            protected override void OnInit(DayPilot.Web.Mvc.Events.Calendar.InitArgs e)
             {
                 kauppeedbEntities db = new kauppeedbEntities();
                 Events = from ev in db.Varaus select ev;
@@ -44,7 +46,23 @@ namespace PointJalkahoitoDemoEka.Controllers
 
                 Update();
             }
-            protected override void OnEventResize(EventResizeArgs e)
+
+            protected override void OnCommand(DayPilot.Web.Mvc.Events.Calendar.CommandArgs e)
+            {
+                switch (e.Command)
+                {
+                    case "previous":
+                        StartDate = StartDate.AddDays(-7);
+                        Update(CallBackUpdateType.Full);
+                        break;
+                    case "next":
+                        StartDate = StartDate.AddDays(7);
+                        Update(CallBackUpdateType.Full);
+                        break;
+                }
+                //base.OnCommand(e);
+            }
+            protected override void OnEventResize(DayPilot.Web.Mvc.Events.Calendar.EventResizeArgs e)
             //protected override void OnInit(DayPilot.Web.Mvc.Events.Month.InitArgs e)
             {
                 kauppeedbEntities db = new kauppeedbEntities();
@@ -63,7 +81,7 @@ namespace PointJalkahoitoDemoEka.Controllers
 
             //    Update();
             //}
-            protected override void OnEventMove(EventMoveArgs e)
+            protected override void OnEventMove(DayPilot.Web.Mvc.Events.Calendar.EventMoveArgs e)
             {
                 //var db = new kauppeedbEntities();
                 kauppeedbEntities db = new kauppeedbEntities();
@@ -93,19 +111,25 @@ namespace PointJalkahoitoDemoEka.Controllers
 
 
 
-            protected override void OnTimeRangeSelected(TimeRangeSelectedArgs e)
+            protected override void OnTimeRangeSelected(DayPilot.Web.Mvc.Events.Calendar.TimeRangeSelectedArgs e)
             {
+
                 kauppeedbEntities db = new kauppeedbEntities();
+                //var edata = (string)e.Data["name"];
+                //var edata = Convert.ToString(e.Data["name"]);
                 //var toBeCreated = new Varaus { Alku = Convert.ToString(e.Start), Loppu = Convert.ToString(e.End), Palvelun_nimi = (string)e.Data["name"] };
                 //var toBeCreated = new Varaus { Alku = Convert.ToString(e.Start), Loppu = Convert.ToString(e.End), Palvelun_nimi = (string)e.Data["name"] };
                 var toBeCreated = new Varaus { Alku = e.Start, Loppu = e.End, Palvelun_nimi = (string)e.Data["name"] };
+                //var toBeCreated = new Varaus { Alku = e.Start, Loppu = e.End, Palvelun_nimi = Convert.ToString(e.Data["name"]) };
+                //var toBeCreated = new Varaus { Alku = e.Start, Loppu = e.End, Palvelun_nimi = "Nettivaraus + [e.name]" };
+                //var toBeCreated = new Varaus { Alku = e.Start, Loppu = e.End, Palvelun_nimi = edata};
 
                 //db.Varaus.InsertOnSubmit(toBeCreated);
                 db.Varaus.Add(toBeCreated);
                 db.SaveChanges();
                 //db.SubmitChanges();
                 Update();
-            }
+                }
 
 
             protected override void OnFinish()

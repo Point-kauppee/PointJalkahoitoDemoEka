@@ -1,18 +1,35 @@
 ﻿@{
-    ViewBag.Title = "ASP.NET MVC 5 Monthly Event Calendar";
+    ViewBag.Title = "ASP.NET MVC 5 Event Calendar";
 }
 <script src="~/Scripts/DayPilot/daypilot-all.min.js"></script>
-
+@*<script src="~/Scripts/DayPilot/daypilot-calendar.src.js"></script>*@
 <h2>ASP.NET MVC 5 Event Calendar</h2>
 
 
-
-@Html.DayPilotMonth("dpm", new DayPilotMonthConfig
+@*@Html.DayPilotMonth("dpm", new DayPilotMonthConfig
 {
     BackendUrl = Url.Content("~/Home/Backend"),
     EventMoveHandling = DayPilot.Web.Mvc.Events.Month.EventMoveHandlingType.CallBack,
     EventResizeHandling = DayPilot.Web.Mvc.Events.Month.EventResizeHandlingType.CallBack,
     TimeRangeSelectedHandling = DayPilot.Web.Mvc.Events.Month.TimeRangeSelectedHandlingType.JavaScript,
     TimeRangeSelectedJavaScript = "dpm.timeRangeSelectedCallBack(start, end, { name: prompt('New Event Name:', 'New Event') });"
+    //TimeRangeSelectedJavaScript = "dpm.timeRangeSelectedCallBack(Alku, Loppu, { name: prompt('New Event Name:', 'New Event') });"
+})*@
+<div class="space">
+   Viikko:
+    <a href="javascript:dpm.commandCallBack('previous');">Edellinen</a>
+
+    <a href="javascript:dpm.commandCallBack('next');">Seuraava</a>
+</div>
+@Html.DayPilotCalendar("dpm", new DayPilotCalendarConfig
+{
+    BackendUrl = Url.Content("~/Home/Backend"),
+    ViewType = DayPilot.Web.Mvc.Enums.Calendar.ViewType.WorkWeek,
+    CssOnly = true,
+    //CssClassPrefix = "calendar_white",
+    EventMoveHandling = DayPilot.Web.Mvc.Events.Calendar.EventMoveHandlingType.CallBack,
+    EventResizeHandling = DayPilot.Web.Mvc.Events.Calendar.EventResizeHandlingType.CallBack,
+    TimeRangeSelectedHandling = DayPilot.Web.Mvc.Events.Calendar.TimeRangeSelectedHandlingType.JavaScript,
+    TimeRangeSelectedJavaScript = "dpm.timeRangeSelectedCallBack(start, end, null, { name: prompt('New Event Name:', 'New Event') });"
     //TimeRangeSelectedJavaScript = "dpm.timeRangeSelectedCallBack(Alku, Loppu, { name: prompt('New Event Name:', 'New Event') });"
 })

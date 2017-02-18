@@ -396,6 +396,7 @@
     <None Include="Properties\PublishProfiles\PointJalkahoitoDemoEka20170202082920.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\DayPilot\daypilot-all.min.js" />
+    <Content Include="Scripts\DayPilot\daypilot-calendar.src.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
